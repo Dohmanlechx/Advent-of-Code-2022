@@ -2,7 +2,7 @@ package puzzles
 
 import reader.Reader
 
-class Day4 {
+class Day04 {
     private val pairs = Reader.input(4).toPairList()
 
     fun p1() {

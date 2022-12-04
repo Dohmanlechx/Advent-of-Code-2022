@@ -1,18 +1,18 @@
-import puzzles.Day1
-import puzzles.Day2
-import puzzles.Day3
-import puzzles.Day4
+import puzzles.Day01
+import puzzles.Day02
+import puzzles.Day03
+import puzzles.Day04
 
 fun main() {
-    Day1().p1()
-    Day1().p2()
+    Day01().p1()
+    Day01().p2()
 
-    Day2().p1()
-    Day2().p2()
+    Day02().p1()
+    Day02().p2()
 
-    Day3().p1()
-    Day3().p2()
+    Day03().p1()
+    Day03().p2()
 
-    Day4().p1()
-    Day4().p2()
+    Day04().p1()
+    Day04().p2()
 }

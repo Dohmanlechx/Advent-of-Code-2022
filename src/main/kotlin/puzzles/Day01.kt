@@ -2,7 +2,7 @@ package puzzles
 
 import reader.Reader
 
-class Day1 {
+class Day01 {
     fun p1() {
         val res = scoreboard().first()
         require(res == 75501)

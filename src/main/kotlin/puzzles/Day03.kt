@@ -2,7 +2,7 @@ package puzzles
 
 import reader.Reader
 
-class Day3 {
+class Day03 {
     private val rucksacks = Reader.input(3)
 
     private val priorities =
