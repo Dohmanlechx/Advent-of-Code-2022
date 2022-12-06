@@ -1,8 +1,4 @@
-import puzzles.Day01
-import puzzles.Day02
-import puzzles.Day03
-import puzzles.Day04
-import puzzles.Day05
+import puzzles.*
 
 fun main() {
     Day01().p1()
@@ -24,4 +20,8 @@ fun main() {
     Day05().p1()
     Day05().p2()
     println("Day 5 done!")
+
+    Day06().p1()
+    Day06().p2()
+    println("Day 6 done!")
 }
