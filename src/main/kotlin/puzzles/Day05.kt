@@ -11,19 +11,22 @@ class Day05 {
             .split("\n")
             .map(String::trim)
 
-    private val crates: Map<Int, Stack> = mapOf(
-        1 to mutableListOf('B', 'S', 'V', 'Z', 'G', 'P', 'W'),
-        2 to mutableListOf('J', 'V', 'B', 'C', 'Z', 'F'),
-        3 to mutableListOf('V', 'L', 'M', 'H', 'N', 'Z', 'D', 'C'),
-        4 to mutableListOf('L', 'D', 'M', 'Z', 'P', 'F', 'J', 'B'),
-        5 to mutableListOf('V', 'F', 'C', 'G', 'J', 'B', 'Q', 'H'),
-        6 to mutableListOf('G', 'F', 'Q', 'T', 'S', 'L', 'B'),
-        7 to mutableListOf('L', 'G', 'C', 'Z', 'V'),
-        8 to mutableListOf('N', 'L', 'G'),
-        9 to mutableListOf('J', 'F', 'H', 'C')
-    )
+    private fun crates(): Map<Int, Stack> =
+        mapOf(
+            1 to mutableListOf('B', 'S', 'V', 'Z', 'G', 'P', 'W'),
+            2 to mutableListOf('J', 'V', 'B', 'C', 'Z', 'F'),
+            3 to mutableListOf('V', 'L', 'M', 'H', 'N', 'Z', 'D', 'C'),
+            4 to mutableListOf('L', 'D', 'M', 'Z', 'P', 'F', 'J', 'B'),
+            5 to mutableListOf('V', 'F', 'C', 'G', 'J', 'B', 'Q', 'H'),
+            6 to mutableListOf('G', 'F', 'Q', 'T', 'S', 'L', 'B'),
+            7 to mutableListOf('L', 'G', 'C', 'Z', 'V'),
+            8 to mutableListOf('N', 'L', 'G'),
+            9 to mutableListOf('J', 'F', 'H', 'C')
+        )
 
     fun p1() {
+        val crates = crates()
+
         for (instruction in instructions) {
             instruction.execute { count, from, to ->
                 val a = crates.getValue(from)
@@ -37,6 +40,8 @@ class Day05 {
     }
 
     fun p2() {
+        val crates = crates()
+
         for (instruction in instructions) {
             instruction.execute { count, from, to ->
                 val a = crates.getValue(from)
