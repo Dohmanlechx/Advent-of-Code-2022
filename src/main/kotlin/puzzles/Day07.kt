@@ -38,6 +38,7 @@ class Computer {
                             else -> forward(path)
                         }
                     }
+
                     line.ls() -> {
                         val output = terminalOutput.drop(i + 1)
                         val nextCommand = output.indexOfFirst { it.isCommand() }.takeIf { it > 0 } ?: output.count()

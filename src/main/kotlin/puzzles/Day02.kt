@@ -53,9 +53,11 @@ class Day02 {
                     is Scissors -> Rock
                 }
             }
+
             Result.DRAW -> {
                 return opponent
             }
+
             Result.LOSS -> {
                 return when (opponent) {
                     is Rock -> Scissors
