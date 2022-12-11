@@ -40,4 +40,9 @@ fun main() {
         p1()
         p2()
     }
+
+    Day09().apply {
+        p1()
+        p2()
+    }
 }
