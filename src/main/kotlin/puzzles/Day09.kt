@@ -8,7 +8,6 @@ class Day09 {
 
     fun p1() {
         val res = solve(knotCount = 2)
-        println(res)
         require(res == 6098)
     }
 

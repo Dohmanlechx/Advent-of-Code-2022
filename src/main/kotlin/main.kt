@@ -45,4 +45,8 @@ fun main() {
         p1()
         p2()
     }
+
+    Day10().apply {
+        p1p2()
+    }
 }
