@@ -42,7 +42,7 @@ class Day10 {
         require(signalStrengths == 13720)
 
         // Part 2
-        pixels.chunked(40).forEach(::println)
+        //pixels.chunked(40).forEach(::println)
 
         // #### ###  #  # ###  #  # ####  ##  #  #
         // #    #  # #  # #  # #  #    # #  # #  #
