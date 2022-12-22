@@ -2,18 +2,21 @@ package puzzles
 
 import reader.Reader
 
-class Day07 {
-    private val computer = Computer().also { it.execute(terminalOutput = Reader.input(7)) }
+private fun main() {
+    p1()
+    p2()
+}
 
-    fun p1() {
-        val res = computer.sumOfDirectoriesUnderMaxSize()
-        require(res == 1206825)
-    }
+private val computer = Computer().also { it.execute(terminalOutput = Reader.input(7)) }
 
-    fun p2() {
-        val res = computer.findSmallestDirectoryToDeleteForTheUpgrade()?.size()
-        require(res == 9608311)
-    }
+private fun p1() {
+    val res = computer.sumOfDirectoriesUnderMaxSize()
+    require(res == 1206825)
+}
+
+private fun p2() {
+    val res = computer.findSmallestDirectoryToDeleteForTheUpgrade()?.size()
+    require(res == 9608311)
 }
 
 class Computer {

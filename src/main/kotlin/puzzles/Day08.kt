@@ -2,18 +2,21 @@ package puzzles
 
 import reader.Reader
 
-class Day08 {
-    private val forest = Forest(input = Reader.input(8))
+private fun main() {
+    p1()
+    p2()
+}
 
-    fun p1() {
-        val res = forest.countOfVisibleTreesFromOutside()
-        require(res == 1789)
-    }
+private val forest = Forest(input = Reader.input(8))
 
-    fun p2() {
-        val res = forest.highestTreeScenicScore()
-        require(res == 314820)
-    }
+private fun p1() {
+    val res = forest.countOfVisibleTreesFromOutside()
+    require(res == 1789)
+}
+
+private fun p2() {
+    val res = forest.highestTreeScenicScore()
+    require(res == 314820)
 }
 
 data class Forest(val input: List<String>) {

@@ -2,47 +2,54 @@ package puzzles
 
 import reader.Reader
 
-class Day11 {
-    private val input = Reader.input(11, split = "\r\n")
+private fun main() {
+    p1()
+    p2()
+}
 
-    fun p1() {
-        val monkeys =
-            input
-                .filterNot(String::isEmpty)
-                .chunked(6)
-                .map(Monkey::fromData)
+private val input = Reader.input(11, split = "\r\n")
 
-        fun updateMonkeyItem(mi: Int, ii: Int, item: Int) {
-            monkeys[mi].items[ii] = item
-        }
+private fun p1() {
+    val monkeys =
+        input
+            .filterNot(String::isEmpty)
+            .chunked(6)
+            .map(Monkey::fromData)
 
-        repeat(20) {
-            monkeys.forEachIndexed { mi, monkey ->
-                monkey.items.forEachIndexed { ii, item ->
-                    updateMonkeyItem(mi, ii, monkey.operation(item))
-                    updateMonkeyItem(mi, ii, monkey.items[ii] / 3)
-
-                    val monkeyIndex = when {
-                        monkey.items[ii] % monkey.divisibleBy == 0 -> monkey.throwToMonkeyIfTrue
-                        else -> monkey.throwToMonkeyIfFalse
-                    }
-
-                    monkeys[monkeyIndex].items.add(monkey.items[ii])
-
-                    monkey.inspected++
-                }
-                monkey.items.clear()
-            }
-        }
-
-        val res =
-            monkeys
-                .sortedBy(Monkey::inspected)
-                .takeLast(2)
-                .let { it[0].inspected * it[1].inspected }
-
-        require(res == 113220)
+    fun updateMonkeyItem(mi: Int, ii: Int, item: Int) {
+        monkeys[mi].items[ii] = item
     }
+
+    repeat(20) {
+        monkeys.forEachIndexed { mi, monkey ->
+            monkey.items.forEachIndexed { ii, item ->
+                updateMonkeyItem(mi, ii, monkey.operation(item))
+                updateMonkeyItem(mi, ii, monkey.items[ii] / 3)
+
+                val monkeyIndex = when {
+                    monkey.items[ii] % monkey.divisibleBy == 0 -> monkey.throwToMonkeyIfTrue
+                    else -> monkey.throwToMonkeyIfFalse
+                }
+
+                monkeys[monkeyIndex].items.add(monkey.items[ii])
+
+                monkey.inspected++
+            }
+            monkey.items.clear()
+        }
+    }
+
+    val res =
+        monkeys
+            .sortedBy(Monkey::inspected)
+            .takeLast(2)
+            .let { it[0].inspected * it[1].inspected }
+
+    require(res == 113220)
+}
+
+private fun p2() {
+    // I give up.
 }
 
 data class Monkey(

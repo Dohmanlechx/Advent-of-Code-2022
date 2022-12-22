@@ -3,29 +3,32 @@ package puzzles
 import reader.Reader
 import kotlin.math.abs
 
-class Day09 {
-    private val input = Reader.input(9)
+private fun main() {
+    p1()
+    p2()
+}
 
-    fun p1() {
-        val res = solve(knotCount = 2)
-        require(res == 6098)
+private val input = Reader.input(9)
+
+private fun p1() {
+    val res = solve(knotCount = 2)
+    require(res == 6098)
+}
+
+private fun p2() {
+    // I give up.
+}
+
+private fun solve(knotCount: Int): Int {
+    val rope = Rope(knotCount)
+
+    for (instruction in input) {
+        val (direction, steps) = instruction.split(" ")
+        rope.move(direction, steps.toInt())
+
     }
 
-    fun p2() {
-        // I give up.
-    }
-
-    private fun solve(knotCount: Int): Int {
-        val rope = Rope(knotCount)
-
-        for (instruction in input) {
-            val (direction, steps) = instruction.split(" ")
-            rope.move(direction, steps.toInt())
-
-        }
-
-        return rope.visitedPositionsOfTail()
-    }
+    return rope.visitedPositionsOfTail()
 }
 
 class Rope(size: Int) {

@@ -2,68 +2,71 @@ package puzzles
 
 import reader.Reader
 
-class Day02 {
-    private val rounds = Reader.input(2)
+private fun main() {
+    p1()
+    p2()
+}
 
-    fun p1() {
-        val res = rounds
-            .fold(0) { acc, round ->
-                val myShape = shapeOf(round.substringAfter(' '))
-                val elfShape = shapeOf(round.substringBefore(' '))
-                acc + myShape.points + myShape.versus(elfShape).points
-            }
+private val rounds = Reader.input(2)
 
-        require(res == 14827)
-    }
-
-    fun p2() {
-        val res = rounds
-            .fold(0) { acc, round ->
-                val desiredResult = resultOf(round.substringAfter(' '))
-                val elfShape = shapeOf(round.substringBefore(' '))
-                val myShape = shapeToUse(desiredResult, elfShape)
-                acc + myShape.points + desiredResult.points
-            }
-
-        require(res == 13889)
-    }
-
-    private fun shapeOf(c: String): Shape {
-        return when (c) {
-            "A", "X" -> Rock
-            "B", "Y" -> Paper
-            else -> Scissors
+private fun p1() {
+    val res = rounds
+        .fold(0) { acc, round ->
+            val myShape = shapeOf(round.substringAfter(' '))
+            val elfShape = shapeOf(round.substringBefore(' '))
+            acc + myShape.points + myShape.versus(elfShape).points
         }
-    }
 
-    private fun resultOf(c: String): Result {
-        return when (c) {
-            "X" -> Result.LOSS
-            "Y" -> Result.DRAW
-            else -> Result.WIN
+    require(res == 14827)
+}
+
+private fun p2() {
+    val res = rounds
+        .fold(0) { acc, round ->
+            val desiredResult = resultOf(round.substringAfter(' '))
+            val elfShape = shapeOf(round.substringBefore(' '))
+            val myShape = shapeToUse(desiredResult, elfShape)
+            acc + myShape.points + desiredResult.points
         }
+
+    require(res == 13889)
+}
+
+private fun shapeOf(c: String): Shape {
+    return when (c) {
+        "A", "X" -> Rock
+        "B", "Y" -> Paper
+        else -> Scissors
     }
+}
 
-    private fun shapeToUse(result: Result, opponent: Shape): Shape {
-        when (result) {
-            Result.WIN -> {
-                return when (opponent) {
-                    is Rock -> Paper
-                    is Paper -> Scissors
-                    is Scissors -> Rock
-                }
+private fun resultOf(c: String): Result {
+    return when (c) {
+        "X" -> Result.LOSS
+        "Y" -> Result.DRAW
+        else -> Result.WIN
+    }
+}
+
+private fun shapeToUse(result: Result, opponent: Shape): Shape {
+    when (result) {
+        Result.WIN -> {
+            return when (opponent) {
+                is Rock -> Paper
+                is Paper -> Scissors
+                is Scissors -> Rock
             }
+        }
 
-            Result.DRAW -> {
-                return opponent
-            }
+        Result.DRAW -> {
+            return opponent
+        }
 
-            Result.LOSS -> {
-                return when (opponent) {
-                    is Rock -> Scissors
-                    is Paper -> Rock
-                    is Scissors -> Paper
-                }
+        Result.LOSS -> {
+            return when (opponent) {
+                is Rock -> Scissors
+                is Paper -> Rock
+                is Scissors -> Paper
             }
         }
     }
